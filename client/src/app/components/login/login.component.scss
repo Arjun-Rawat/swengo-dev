@@ -1,0 +1,27 @@
+@use "../../../variables";
+
+// ::ng-deep  .mat-tab-group.RLtabs  .mat-tab-header .mat-tab-labels .mat-tab-label:nth-child(1){
+//     background-color:variables.$btn-p2;
+//     color: #f5f5f5;
+// }
+// ::ng-deep  .mat-tab-group.RLtabs  .mat-tab-header .mat-tab-labels .mat-tab-label:nth-child(2){
+//     background-color:variables.$btn-p3;
+//     color: #f5f5f5;
+// }
+// ::ng-deep  .mat-tab-group.RLtabs .mat-ink-bar{display: none;}
+
+.RLwrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+mat-form-field {
+  width: 100%;
+}
+.RLwrapper .utils {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}

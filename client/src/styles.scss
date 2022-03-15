@@ -1,0 +1,140 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+@use "./variables";
+@use "./overwrites.scss";
+
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+$custom-font: mat.define-typography-config(
+  $font-family: "Montserrat",
+);
+@include mat.core($custom-font);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$client-primary: mat.define-palette(mat.$indigo-palette);
+$client-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$client-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$client-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $client-primary,
+      accent: $client-accent,
+      warn: $client-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($client-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// body { margin: 0; font-family: 'Source Sans Pro', sans-serif!important; }
+// body { margin: 0; font-family: 'Poppins', sans-serif!important; }
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif !important;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5);
+  background-color: #eaeaea;
+  display: none;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  background-color: #f5f5f5;
+  display: none;
+}
+::-webkit-scrollbar-thumb {
+  // background-color: #999;
+  background-color: #999;
+  display: none;
+}
+body {
+  margin: 0;
+  // background-color: #f0f1f3;
+  background-color: #fff;
+}
+.pd-1em {
+  padding: 1.5em 1.5em;
+}
+.ffont30 {
+  font-size: 30px;
+}
+.w-60 {
+  width: 60%;
+}
+.w-100{
+  width: 100%;
+}
+.ml-auto{margin-left: auto;}
+.mr-auto{margin-right: auto;}
+.mlr-auto{margin: auto;}
+.break-text-overflow{overflow-wrap: break-word;}
+// overrites
+
+//
+
+// customs
+.shadow-box {
+  box-shadow: 0 3px 5px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+}
+.cc-shadow{box-shadow: 0px 0px 0px 1px rgb(0 0 0 / 8%) !important}
+
+.mt-40 {
+  margin-top: 40px;
+}
+.font-bold {
+  font-weight: 600;
+}
+.mt-64 {
+  margin-top: 64px;
+}
+.mb-40{margin-bottom: 40px;}
+.mt-16{margin-top: 16px;}
+.align-center{text-align: center;}
+.mtb-40{margin-top: 40px!important;margin-bottom: 40px!important;}
+.shift-right{float: right;}
+.shift-left{float: left;}
+.width-fc{width: fit-content!important;}
+//
+
+// variables
+// .mat-form-field-flex {
+//   background: none !important;
+//   border: 2px solid #f5f5f5 !important;
+// }
+
+ul.help-block {
+  list-style: none;
+  padding: 0;
+  color: variables.$error;
+}
+a{list-style: none; text-decoration: none;color: #0f0f0f;}
+a:hover{color: inherit;}
+
+
+// fonts
+.font-10{font-size: 10px;}
+.font-as-parent{font-size: inherit;}

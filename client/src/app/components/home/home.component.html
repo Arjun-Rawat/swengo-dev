@@ -1,0 +1,236 @@
+<div>
+  <div class="post-container mt-40">
+    <div class="d-flex w-100 justify-content-center">
+      <div class="post_box-wrapper">
+        <form class="post-form" [formGroup]="form">
+          <mat-form-field class="" appearance="legacy">
+            <mat-label>What's Going on your location ?</mat-label>
+            <textarea
+              minlength="3"
+              matInput
+              placeholder="Ex. It makes me feel..."
+              name="postContext"
+              formControlName="postContext"
+            ></textarea>
+          </mat-form-field>
+
+          <div class="post-utilities">
+            <div class="extra-features">
+              <div class="icons-w">
+                <a href="#"
+                  ><mat-icon class="d-flex" aria-hidden="false" aria-label=""
+                    >image</mat-icon
+                  ></a
+                >
+              </div>
+              <div class="icons-w">
+                <a href="#"
+                  ><mat-icon class="d-flex" aria-hidden="false" aria-label=""
+                    >smart_display</mat-icon
+                  ></a
+                >
+              </div>
+              <div class="icons-w">
+                <a href="#"
+                  ><mat-icon class="d-flex" aria-hidden="false" aria-label=""
+                    >place</mat-icon
+                  ></a
+                >
+              </div>
+            </div>
+            <div class="post-submit">
+              <button
+                [disabled]="!form.valid || processing"
+                mat-raised-button
+                color="primary"
+                (click)="createPost()"
+              >
+                Post
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- 
+    <div>
+      <form class="post-form">
+        <mat-tab-group animationDuration="0ms">
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <mat-icon class="d-flex" aria-hidden="false" aria-label=""
+                >description</mat-icon
+              >
+            </ng-template>
+            <mat-form-field class="" appearance="fill">
+              <mat-label>What's Going on your location ?</mat-label>
+              <textarea
+                matInput
+                placeholder="Ex. It makes me feel..."
+              ></textarea>
+            </mat-form-field>
+            <div class="post-submit">
+              <button mat-raised-button color="primary" href="#">Post</button>
+            </div>
+          </mat-tab>
+
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <mat-icon class="d-flex" aria-hidden="false" aria-label=""
+                >video_camera_front</mat-icon
+              >
+            </ng-template>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi
+            quibusdam quos, possimus neque repudiandae, corporis eaque
+            reprehenderit omnis perspiciatis doloribus rem. Porro et fugit
+            sequi, consequatur a harum labore similique iste impedit ipsum
+            delectus nisi, recusandae, tenetur ipsam magni. Ut reprehenderit
+            nemo ipsum a quos porro at provident debitis aut natus esse incidunt
+            aliquid quae explicabo autem nihil voluptates, facere doloribus
+            magnam deleniti. 
+          </mat-tab>
+        </mat-tab-group>
+      </form>
+    </div> -->
+    <div class="recent-posts mt-64" style="width: 65%">
+      <div *ngFor="let post of POSTS; index as i">
+        <!--  -->
+        <mat-card class="mb-40 cc-shadow" *ngIf="newPostArrived" @fade>
+          <div class="post-card">
+            <div class="post-details">
+              <div class="auther-info w-100">
+                <div class="posted-by"></div>
+                <div class="personal-info">
+                  <div class="font-bold name">Lorem ipsum</div>
+                  <div class="work">Lorem ipsum dolor sit amet</div>
+                </div>
+                <div class="posted_at ml-auto font-bold">
+                  {{ post.createdAt }}
+                </div>
+              </div>
+            </div>
+
+            <div class="post-images"></div>
+            <div class="post-context break-text-overflow mt-16">
+              <p>{{ post.postContext }}</p>
+            </div>
+          </div>
+        </mat-card>
+
+        <!--  -->
+
+        <mat-card class="mb-40 cc-shadow">
+          <div class="post-card">
+            <div class="post-details">
+              <div class="auther-info w-100">
+                <div class="posted-by"></div>
+                <div class="personal-info">
+                  <div class="font-bold name">Lorem ipsum</div>
+                  <div class="work">Lorem ipsum dolor sit amet</div>
+                  <div class="d-flex align-items-center font-10">
+                    <span
+                      ><mat-icon
+                        aria-hidden="false"
+                        aria-label=""
+                        class="d-flex font-as-parent align-items-center width-fc"
+                        >access_time</mat-icon
+                      ></span
+                    >
+                    &nbsp; <small> {{ post.createdAt }} </small>
+                  </div>
+                </div>
+                <div class="posted_at ml-auto font-bold">
+                  <div>
+                    <button
+                      mat-icon-button
+                      [matMenuTriggerFor]="menu"
+                      aria-label="Example icon-button with a menu"
+                    >
+                      <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu
+                      #menu="matMenu"
+                      yPosition="below"
+                      xPosition="before"
+                    >
+                      <button mat-menu-item>
+                        <mat-icon>mode_edit</mat-icon>
+                        <span>Edit this post</span>
+                      </button>
+                      <!-- <button mat-menu-item disabled>
+                        <mat-icon>voicemail</mat-icon>
+                        <span>Check voice mail</span>
+                      </button> -->
+                      <button mat-menu-item>
+                        <mat-icon>delete_outline</mat-icon>
+                        <span>Delete this post</span>
+                      </button>
+
+                      <button mat-menu-item>
+                        <mat-icon>notifications_off</mat-icon>
+                        <span>Disable alerts</span>
+                      </button>
+                    </mat-menu>
+                  </div>
+                  <!-- <small> {{ post.createdAt }} </small> -->
+                </div>
+              </div>
+            </div>
+            <ng-template [ngIf]="i % 2 == 0" [ngIfElse]="dummy">
+              <div
+                class="post-images"
+                style="
+                  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkTQ8DFOgujidIRil33r2QnSZ2Y_ZHahrUlw&usqp=CAU');
+                  background-position: center;
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                  background-color: unset;
+                "
+              ></div>
+            </ng-template>
+
+            <ng-template #dummy>
+              <div class="post-images"></div>
+            </ng-template>
+
+            <div class="post-context break-text-overflow mt-16">
+              <p>{{ post.postContext }}</p>
+            </div>
+            <div class="activties">
+              <div>
+                <a href="">
+                  <mat-icon aria-hidden="false" aria-label=""
+                    >task_alt</mat-icon
+                  >
+                  &nbsp; APPROVE
+                </a>
+              </div>
+              <div>
+                <a href="">
+                  <mat-icon aria-hidden="false" aria-label=""
+                    >unpublished</mat-icon
+                  >&nbsp; REJECT
+                </a>
+              </div>
+              <div>
+                <a href="">
+                  <mat-icon aria-hidden="false" aria-label=""
+                    >insert_comment</mat-icon
+                  >
+                  &nbsp; COMMENT
+                </a>
+              </div>
+              <div>
+                <a href="">
+                  <mat-icon aria-hidden="false" aria-label="">share</mat-icon>
+                  &nbsp; SHARE
+                </a>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

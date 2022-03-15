@@ -1,0 +1,20 @@
+$accent: #6d87a7;
+$error: #ef310b;
+$warning: #f9e055;
+$valid: #038144;
+
+// buttons color
+
+$btn-p2: #2dbadf;
+$btn-p3: #0070bf;
+
+@mixin circuler {
+  border-radius: 50%;
+}
+$base-color: #3f51b5;
+$base-super-light:#6c7bd182;
+$base-border-color: #d5d5d5;
+$border-light:#d5d5d54d;
+$btn-disabled-base:#6c7bd1a2;
+$base-color-light: #727dbd;
+$border-dark: rgba($base-color, 0.88);

@@ -1,0 +1,19 @@
+<div class="wrapper">
+  <app-header></app-header>
+
+  <div class="flex-wrapper hg-100vh">
+    <div class="main-sidebar" style="flex-basis: 35%">
+      <app-sidebar></app-sidebar>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="container-fluid">
+        <router-outlet> </router-outlet>
+      </div>
+    </div>
+    <div
+      class="secondary-sidebar"
+      style="height: 100vh; flex-basis: 40%; background-color: #f5f5f5"
+    ></div>
+  </div>
+</div>
